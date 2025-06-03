@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Eden</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Sidebar Section -->
+      <aside>
+        <div class="toggle">
+          <div class="logo">
+            <img src="images/logo.png" />
+            <h2>Eden<span class="danger">Garden</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp"> close </span>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="#" class="active">
+            <span class="material-icons-sharp"> dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="/Manual">
+            <span class="material-icons-sharp"> settings_remote </span>
+            <h3>Manual</h3>
+          </a>
+          <a href="/Plantas">
+            <span class="material-icons-sharp"> eco </span>
+            <h3>Plantas</h3>
+            <span class="message-count">3</span>
+          </a>
+          <a href="/Configuração">
+            <span class="material-icons-sharp"> settings </span>
+            <h3>Configuração</h3>
+          </a>
+          <a href="/Logout">
+            <span class="material-icons-sharp"> logout </span>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+      <!-- End of Sidebar Section -->
+
+      <!-- Main Content -->
+      <main>
+        <h1>Dashboard</h1>
+        <!-- dashboards -->
+        <div class="dashboard">
+          <div class="temperature">
+            <div class="status">
+              <div class="info">
+                <h3>Temperatura Interna</h3>
+                <h1>-- °C</h1>
+              </div>
+              <div class="progresss">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="percentage">
+                  <p>Ideal</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="visits">
+            <div class="status">
+              <div class="info">
+                <h3>Umidade Interna</h3>
+                <h1>-- %</h1>
+              </div>
+              <div class="progresss">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="percentage">
+                  <p>Ruim</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="searches">
+            <div class="status">
+              <div class="info">
+                <h3>Nível de Água</h3>
+                <h1>-- Ls</h1>
+              </div>
+              <div class="progresss">
+                <svg>
+                  <circle cx="38" cy="38" r="36"></circle>
+                </svg>
+                <div class="percentage">
+                  <p>Ok</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of dashboard -->
+
+        <!-- New plants Section -->
+        <div class="plants">
+          <h2>Plantas</h2>
+          <div class="plant-list">
+            <div class="plant">
+              <img src="images/plant-1.png" />
+              <h2>Orquídea</h2>
+              <p>Flor Tropical</p>
+            </div>
+            <div class="plant">
+              <img src="images/plant-2.png" />
+              <h2>Morango</h2>
+              <p>Fruta Ácida</p>
+            </div>
+            <div class="plant">
+              <img src="images/plant-3.png" />
+              <h2>Tomate</h2>
+              <p>Fruto Ácido</p>
+            </div>
+            <div class="plant">
+              <img src="images/plus.png" />
+              <h2>Adicionar</h2>
+              <p>Nova planta</p>
+            </div>
+          </div>
+        </div>
+        <!-- End of New plants Section -->
+
+        <!-- Recent Sensors Table -->
+        <div class="log">
+          <h2>Registro</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Sensor</th>
+                <th>Valor</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <a href="#">Mostrar todos</a>
+        </div>
+        <!-- End of Recent Sensors -->
+      </main>
+      <!-- End of Main Content -->
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <div class="nav">
+          <button id="menu-btn">
+            <span class="material-icons-sharp"> menu </span>
+          </button>
+          <div class="dark-mode">
+            <span class="material-icons-sharp active"> light_mode </span>
+            <span class="material-icons-sharp"> dark_mode </span>
+          </div>
+
+          <div class="profile">
+            <div class="info">
+              <p>Olá, <b>Nick</b></p>
+              <small class="text-muted">Admin</small>
+            </div>
+            <div class="profile-photo">
+              <img src="images/profile-1.jpg" />
+            </div>
+          </div>
+        </div>
+        <!-- End of Nav -->
+
+        <div class="plant-profile">
+          <div class="logo">
+            <img src="images/logo.png" />
+            <h2>Eden</h2>
+            <p>Estufa automatizada</p>
+          </div>
+        </div>
+
+        <div class="buttons">
+          <div class="header">
+            <h2>Botões</h2>
+            <span class="material-icons-sharp"> radio_button_checked </span>
+          </div>
+
+          <div class="button">
+            <div class="icon">
+              <span class="material-icons-sharp"> meeting_room </span>
+            </div>
+            <div class="content">
+              <div class="info">
+                <h3>Porta</h3>
+                <small class="text_muted"> Abrir porta principal </small>
+              </div>
+              <span class="material-icons-sharp"> more_vert </span>
+            </div>
+          </div>
+
+          <div class="button deactive">
+            <div class="icon">
+              <span class="material-icons-sharp"> emoji_objects </span>
+            </div>
+            <div class="content">
+              <div class="info">
+                <h3>Luz</h3>
+                <small class="text_muted"> Ligar luz principal </small>
+              </div>
+              <span class="material-icons-sharp"> more_vert </span>
+            </div>
+          </div>
+
+          <div class="button new">
+            <div>
+              <span class="material-icons-sharp"> sentiment_satisfied </span>
+              <h3>Futuro botão</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="sensors.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
