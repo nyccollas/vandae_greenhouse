@@ -8,12 +8,22 @@ import { service } from "./firebaseConnect.js";
 
 // Dark mode
 document.addEventListener('DOMContentLoaded', () => {
-    const darkMode = document.querySelector('.dark-mode');
+ 
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode-variables'); 
+    } else {
+        document.body.classList.remove('dark-mode-variables');
+    }
 
+    const darkMode = document.querySelector('.dark-mode');
     if (darkMode) {
         darkMode.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode-variables');
             
+            const currentTheme = document.body.classList.contains('dark-mode-variables') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme); 
+
             const spans = darkMode.querySelectorAll('span');
             if (spans.length >= 2) {
                 spans[0].classList.toggle('active');
@@ -22,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
 /* - - - - - - - - - - - - - - - - Dados na FireBase - - - - - - - - - - - - - - - - */
 service.user = "Vandae";
