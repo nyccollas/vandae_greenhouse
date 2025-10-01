@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS SensorDB;
+USE SensorDB;
+
+CREATE TABLE IF NOT EXISTS Sensors (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  umidade INT NOT NULL,
+  s_temp INT NOT NULL,
+  s_luminosity INT NOT NULL,
+  s_tank INT NOT NULL
+);
+
+-- SELECT * FROM Sensors;
