@@ -78,14 +78,15 @@ class FireKeeper:
         for guy in self.postguys:
             data[guy.name] = self.get(guy.name)
 
-        """
+        
         request = {
-            "nome" : data["nome"]
-            "nome" : data["nome"]
-            "nome" : data["nome"]
+            "temperatura" : data["temperatura"],
+            "nivelagua" : data["agua"],
+            "umidade" : data["umidade"]
         }
-        """
-        request = data
+        
+        # request = data
+        
         response = requests.post(self.postguys.apiUrl, json=request)
         if response.status_code < 400:
             print(f"[UPDATE ON SERVER]\t|\tstatus code = {response.status_code}\t|\tresponse = {response.text}")

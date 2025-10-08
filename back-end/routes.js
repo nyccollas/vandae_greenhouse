@@ -3,5 +3,6 @@ const routes = express.Router()
 
 const sensor = require('./controllers/sensors')
 routes.post('/sensors', sensor.create)
+routes.get('/sensors', sensor.getAll)
 
 module.exports = routes
