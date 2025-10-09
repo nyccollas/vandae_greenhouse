@@ -36,6 +36,78 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+/* - - - - - - - - - - - - - - - - Botoes - - - - - - - - - - - - - - - - */
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleButtons = [
+        document.getElementById('button2'),
+        document.getElementById('button3'),
+        document.getElementById('button4')
+    ];
+
+    toggleButtons.forEach(button => {
+        if (button) {
+            const statusIcon = button.querySelector('.content .material-icons-sharp');
+
+            button.addEventListener('click', () => {
+                button.classList.toggle('deactive');
+
+                const isDeactive = button.classList.contains('deactive');
+
+                if (statusIcon) {
+                    if (isDeactive) {
+                        // Se DESATIVADO, usa o ícone 'unchecked' (vazio)
+                        statusIcon.textContent = 'radio_button_unchecked';
+                    } else {
+                        // Se ATIVO, usa o ícone 'checked' (preenchido)
+                        statusIcon.textContent = 'radio_button_checked';
+                    }
+                }
+                
+                const buttonName = button.querySelector('h3').textContent;
+                console.log(`${buttonName} agora está: ${isDeactive ? 'DESATIVADO' : 'ATIVO'}`);
+            });
+        }
+    });
+});
+
+
+/* - - - - - - - - - - - - - - - - Circulos - - - - - - - - - - - - - - - - */
+
+const CIRCUMFERENCE = 251.3; // 2 * PI * 40 ≈ 251.3
+
+function updateCircleProgress(selector, percentage) {
+    const circleElement = document.querySelector(selector);
+    if (!circleElement) {
+        return;
+    }
+
+    const clampedPercentage = Math.min(100, Math.max(0, percentage));
+    
+    // Calcula o offset (a parte *não* preenchida da linha)
+    const offset = CIRCUMFERENCE - (clampedPercentage / 100) * CIRCUMFERENCE;
+    
+    circleElement.style.strokeDashoffset = offset;
+}
+
+// --- Exemplo de Uso ---
+
+// Defina as leituras de seus sensores aqui (de 0 a 100)
+const temperaturaPorcentagem = 75; // 75%
+const umidadePorcentagem = 30; // 30%
+const nivelAguaPorcentagem = 90; // 90%
+
+// Atualiza os círculos de progresso
+updateCircleProgress('.temperature svg circle', temperaturaPorcentagem);
+updateCircleProgress('.visits svg circle', umidadePorcentagem);
+updateCircleProgress('.searches svg circle', nivelAguaPorcentagem);
+
+// Atualiza o texto exibido
+document.getElementById('temperatura-valor').textContent = `${temperaturaPorcentagem} °C`;
+document.getElementById('umidade-valor').textContent = `${umidadePorcentagem} %`;
+document.getElementById('nivel-de-agua-valor').textContent = `${nivelAguaPorcentagem} Ls`;
+
+
 /* - - - - - - - - - - - - - - - - Dados na FireBase - - - - - - - - - - - - - - - - */
 
 const urlDoEndpoint =

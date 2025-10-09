@@ -8,7 +8,6 @@
     --color-white: #ffffff;
     --color-info-dark: #7d8da1;
     --color-dark: #363949;
-    --color-light: #131313
     --color-dark-variant: #677483;
     --color-background: #f6f6f9;
 
@@ -127,7 +126,7 @@ main{
 
 main .dashboard{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.6rem;
 }
 
@@ -136,19 +135,35 @@ main .dashboard > div{
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     margin-top: 1rem;
-    box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
+main .dashboard .state {
+    background: linear-gradient(
+        to bottom, 
+        #93B8E3  0%,
+        #6C9BCF  50%,
+        #497BB2  100%
+    );
+    color: #edeffd;
+}
+
 main .dashboard > div:hover{
-    box-shadow: none;
+    transform: translateY(+4px);
 }
 
 main .dashboard > div .status{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-direction: column;
 }
 
 main .dashboard h3{
@@ -172,25 +187,29 @@ main .dashboard svg circle{
     fill: none;
     stroke-width: 10;
     stroke-linecap: round;
-    transform: translate(5px, 5px);
+    transform: translate(5px, 5px); 
 }
 
 main .dashboard .temperature svg circle{
     stroke: var(--color-success);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
+    /* stroke-dashoffset: 10; */
+    stroke-dasharray: 251.3;
 }
 
 main .dashboard .visits svg circle{
     stroke: var(--color-danger);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
+    /* stroke-dashoffset: -30; */
+    stroke-dasharray: 251.3;
 }
 
 main .dashboard .searches svg circle{
     stroke: var(--color-primary);
-    stroke-dashoffset: -30;
-    stroke-dasharray: 200;
+    /* stroke-dashoffset: -30; */
+    stroke-dasharray: 251.3;
+}
+
+.state .progresss .percentage span {
+    font-size: 3rem; /* Altere para o tamanho desejado, ex: 2rem, 4rem */
 }
 
 main .dashboard .progresss .percentage{
@@ -202,42 +221,6 @@ main .dashboard .progresss .percentage{
     justify-content: center;
     height: 100%;
     width: 100%;
-}
-
-main .plants{
-    margin-top: 1.3rem;
-}
-
-main .plants .plant-list{
-    background-color: var(--color-white);
-    padding: var(--card-padding);
-    border-radius: var(--card-border-radius);
-    margin-top: 1rem;
-    box-shadow: var(--box-shadow);
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1.4rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-main .plants .plant-list:hover{
-    box-shadow: none;
-}
-
-main .plants .plant-list .plant{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-main .plants .plant-list .plant img{
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 0.4rem;
-    border-radius: 50%;
 }
 
 main .log{
@@ -253,13 +236,12 @@ main .log table{
     width: 100%;
     padding: var(--card-padding);
     text-align: center;
-    box-shadow: var(--box-shadow);
     border-radius: var(--card-border-radius);
     transition: all 0.3s ease;
 }
 
 main .log table:hover{
-    box-shadow: none;
+    transform: translateY(+4px);
 }
 
 main table tbody td{
@@ -279,14 +261,157 @@ main .log a{
     color: var(--color-primary);
 }
 
+main .bottom-main-sections {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr 1fr;
+    gap: 1.6rem; /* Mantém o espaçamento entre as caixas */
+    margin-top: 1.4rem; /* Espaço para separar do dashboard */
+}
+
+.new-section {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem; /* Remove o margin-top, pois o pai já tem */
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+}
+
+.new-section:hover{
+    transform: translateY(+4px);
+}
+
+.new-section h2 {
+    margin-bottom: 1rem;
+}
+
+.bar-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* As barras começam na base */
+    height: 200px; /* Altura total do gráfico */
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+}
+
+.bar-chart .bar-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 12%; /* Largura de cada coluna */
+    height: 100%;
+    position: relative;
+    justify-content: flex-end;
+}
+
+.bar-chart .label {
+    font-size: 0.75rem;
+    color: var(--color-dark-variant);
+    /* margin-top: 0.5rem;         */
+    bottom: 0rem; 
+    position: absolute;
+    bottom: -2rem; /* Posiciona a legenda abaixo da linha */
+}
+
+.bar-chart .bar {
+    width: 50%;
+    background-color: var(--color-primary); /* Cor das barras */
+    transition: all 0.5s ease; /* Animação suave */
+    border-radius: 50px;
+}
+
+.bar-chart .bar.today{
+    background-color: #1B9C85;
+}
+
+.bar-chart .bar.tomorrow{
+    background-color: var(--color-background);
+}
+
+.bar-chart .bar:hover {
+    opacity: 0.6;
+}
+
+.time-tracker {
+    background-color: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; Centraliza o conteúdo
+    text-align: center; */
+
+    text-align: left; 
+
+
+    transition: all 0.3s ease;
+}
+
+.time-tracker:hover {
+    transform: translateY(+4px);
+}
+
+.time-tracker h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
+.time-tracker .tracker-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 1.5rem 0; /* Espaçamento vertical */
+    flex-grow: 1; /* Permite que o timer ocupe o espaço restante */
+}
+
+.time-tracker .tracker-timer .value {
+    font-size: 5rem; /* Tamanho grande para o número */
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 2rem;
+}
+
+.time-tracker .tracker-timer p {
+    font-size: 1rem;
+    color: var(--color-dark);
+}
+
+.small .material-icons-sharp {
+    margin: 10px;
+    font-size: 30px; /* Altere para o tamanho desejado */
+    transition: all 0.3s ease;
+}
+
+.small .material-icons-sharp:hover {
+    margin: 10px;
+    font-size: 30px; /* Altere para o tamanho desejado */
+    cursor: pointer;
+    transform: translateY(+4px);
+}
+
+.replay{
+    color: var(--color-danger)
+}
+
 .notes-box {
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
+    transition: all 0.3s ease;
+    resize: none;
+}
+
+.notes-box:hover{
+    transform: translateY(+4px);
 }
 
 .notes-box h2 {
@@ -296,12 +421,13 @@ main .log a{
 
 .notes-box textarea {
     width: 100%;
-    height: 200px;
+    /* height: 200px; */
+    flex-grow: 1;
     padding: 1rem;
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     border-radius: var(--border-radius-1);
-    resize: vertical;
+    resize: none;
     background-color: var(--color-background);
     color: var(--color-dark);
     border: 1px solid var(--color-light);
@@ -362,19 +488,40 @@ main .log a{
 
 .right-section .plant-profile{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
     margin-top: 1rem;
     background-color: var(--color-white);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
-    box-shadow: var(--box-shadow);
     cursor: pointer;
     transition: all 0.3s ease;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center; 
+    width: max-content; 
+}
+
+.plant-info{
+   max-width: 80%;  /* Impede o texto de ultrapassar a largura */
+    margin: 0 auto;  /* Garante que o texto fique centralizado */
+    word-wrap: break-word;  /* Quebra palavras longa */
+}
+
+.right-section .plant-profile p {
+    max-width: 100%; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .right-section .plant-profile:hover{
-    box-shadow: none;
+    transform: translateY(+4px);
 }
 
 .right-section .plant-profile img{
@@ -390,6 +537,9 @@ main .log a{
 
 .right-section .buttons{
     margin-top: 2rem;
+    padding: 20px;  
+    border-radius: var(--card-border-radius);
+    background-color: var(--color-white);
 }
 
 .right-section .buttons .header{
@@ -401,7 +551,6 @@ main .log a{
 
 .right-section .buttons .header span{
     padding: 10px;
-    box-shadow: var(--box-shadow);
     background-color: var(--color-white);
     border-radius: 50%;
 }
@@ -412,16 +561,11 @@ main .log a{
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.7rem;
-    padding: 1.4rem var(--card-padding);
+    padding-top: var(--card-padding);
     border-radius: var(--border-radius-2);
-    box-shadow: var(--box-shadow);
-    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.right-section .buttons .button:hover{
-    box-shadow: none;
-}
 
 .right-section .buttons .button .content{
     display: flex;
@@ -431,12 +575,27 @@ main .log a{
     width: 100%;
 }
 
+
+/* ICONES DOS BOTOES */
 .right-section .buttons .button .icon{
     padding: 0.6rem;
     color: var(--color-white);
-    background-color: var(--color-success);
-    border-radius: 20%;
+    background-color: var(--color-primary);
+    border-radius: 50%;
     display: flex;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.right-section .buttons .button.porta .icon{
+    border: 2px dashed var(--color-dark);
+    background-color: var(--color-white);
+    color: var(--color-dark);
+}
+
+.right-section .buttons .button:not(.porta) .icon:hover{
+    transform: translateY(+4px);
+    opacity: 0.8;
 }
 
 .right-section .buttons .button.deactive .icon{
@@ -551,7 +710,6 @@ main .log a{
         height: 4.6rem;
         width: 100%;
         z-index: 2;
-        box-shadow: 0 1rem 1rem var(--color-light);
         margin: 0;
     }
 
