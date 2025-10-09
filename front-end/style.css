@@ -113,6 +113,7 @@ b{
 }
 
 .container{
+    user-select: none;
     display: grid;
     width: 96%;
     margin: 0 auto;
@@ -224,6 +225,7 @@ main .dashboard .progresss .percentage{
 }
 
 main .log{
+    font-size: 15px;
     margin-top: 1.3rem;
 }
 
@@ -583,8 +585,12 @@ main .bottom-main-sections {
     background-color: var(--color-primary);
     border-radius: 50%;
     display: flex;
-    cursor: pointer;
     transition: all 0.3s ease;
+    cursor:context-menu;
+}
+
+.right-section .buttons .button:not(.porta) .icon{
+    cursor: pointer;
 }
 
 .right-section .buttons .button.porta .icon{
